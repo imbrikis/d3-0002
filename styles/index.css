@@ -1,0 +1,42 @@
+/***********************
+- CSS RESET
+***********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/***********************
+- MAIN STYLING
+***********************/
+h1 {
+  padding: 10rem 0;
+  font-size: 3rem;
+}
+
+.coolness {
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+
+.bar-chart {
+  background: rgb(207, 255, 158);
+}
+
+/* rect {
+  fill: #000;
+} */
+
+.svg-container {
+  background: darkblue;
+}

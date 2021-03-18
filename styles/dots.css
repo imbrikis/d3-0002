@@ -1,0 +1,29 @@
+/***********************
+- CSS RESET
+***********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.svg-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-wrapper svg {
+  display: block;
+}
