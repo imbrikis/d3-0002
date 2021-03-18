@@ -7,7 +7,7 @@
   D3 Force Directed Graph
 </h1>
 
-<h3 align="center">A force directed graph showing various music artists corresponding song count</h3>
+<h3 align="center">A force directed graph showing various music artists and corresponding song count</h3>
 <p align="center">👽</p>
 
 ### Built with :
