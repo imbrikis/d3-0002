@@ -15,3 +15,5 @@
 
 - D3.js
 - Mucho love
+
+![App Screenshot](./screenshot.png)
