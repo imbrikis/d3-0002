@@ -7,9 +7,9 @@ const MAIN_NODE_SIZE = 40
 const CHILD_NODE_SIZE = 15
 const LEAF_NODE_SIZE = 5
 const DEFAULT_DISTANCE = 60
-const MAIN_NODE_DISTANCE = 200
-const LEAF_NODE_DISTANCE = 40
-export const MANY_BODY_STRENGTH = -20
+const MAIN_NODE_DISTANCE = 150
+const CHILD_NODE_DISTANCE = 80
+const LEAF_NODE_DISTANCE = 25
 
 let i = 0
 const addMainNode = (node) => {
@@ -35,9 +35,9 @@ const addChildNode = (
   })
 }
 
-const assembleChildNode = (parentNode, id, subChildCount = 10) => {
+const assembleChildNode = (parentNode, id, subChildCount) => {
   let childNode = { id }
-  addChildNode(parentNode, childNode, 20)
+  addChildNode(parentNode, childNode, CHILD_NODE_SIZE, CHILD_NODE_DISTANCE)
 
   for (let i = 0; i < subChildCount; i++) {
     addChildNode(childNode, { id: '' }, LEAF_NODE_SIZE, LEAF_NODE_DISTANCE)

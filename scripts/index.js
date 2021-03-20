@@ -1,4 +1,4 @@
-import { nodes, links, MANY_BODY_STRENGTH } from './data.js'
+import { nodes, links } from './data.js'
 
 import {
   forceSimulation,
@@ -16,19 +16,36 @@ const centerX = width / 2
 const centerY = height / 2
 
 const simulation = forceSimulation(nodes)
-  .force('charge', forceManyBody().strength(MANY_BODY_STRENGTH))
+  .force('charge', forceManyBody())
   .force(
     'link',
     forceLink(links).distance((link) => link.distance)
   )
   .force('center', forceCenter(centerX, centerY))
 
-const dragInteraction = drag().on('drag', (event, node) => {
-  node.fx = event.x
-  node.fy = event.y
-  simulation.alpha(1)
-  simulation.restart()
-})
+const dragInteraction = (simulation) => {
+  function dragstarted(event) {
+    if (!event.active) simulation.alphaTarget(0.3).restart()
+    event.subject.fx = event.subject.x
+    event.subject.fy = event.subject.y
+  }
+
+  function dragged(event) {
+    event.subject.fx = event.x
+    event.subject.fy = event.y
+  }
+
+  function dragended(event) {
+    if (!event.active) simulation.alphaTarget(0)
+    event.subject.fx = null
+    event.subject.fy = null
+  }
+
+  return drag()
+    .on('start', dragstarted)
+    .on('drag', dragged)
+    .on('end', dragended)
+}
 
 const lines = svg
   .selectAll('line')
@@ -44,7 +61,7 @@ const circles = svg
   .append('circle')
   .attr('fill', (node) => node.color || 'gray')
   .attr('r', (node) => node.size)
-  .call(dragInteraction)
+  .call(dragInteraction(simulation))
 
 const text = svg
   .selectAll('text')
